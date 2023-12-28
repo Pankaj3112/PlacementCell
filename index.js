@@ -21,7 +21,7 @@ app.use(express.urlencoded(
 ));
 app.use(cookieParser());
 
-
+const mongoURI = process.env.MONGODB_URI ||"mongodb://127.0.0.1:27017/";
 
 //mongo store is used to store the session cookie in the db
 app.use(session({
@@ -34,7 +34,7 @@ app.use(session({
     },
     store: MongoStore.create(
         {
-            mongoUrl: 'mongodb+srv://pankaj3112:ftHLwuuPqJvyE9Qj@cluster0.lm6iyo2.mongodb.net/?retryWrites=true&w=majority',
+            mongoUrl: mongoURI,
             autoRemove: 'disabled'
         },
         function(err){
